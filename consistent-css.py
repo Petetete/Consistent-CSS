@@ -1,5 +1,5 @@
-from tkinter import *
-from tkinter.ttk import *
+from tkinter import Tk, Frame, Button, Text
+from tkinter.ttk import Frame, Button
 from tkinter.filedialog import askopenfile
 from tkinter.messagebox import showerror
 
@@ -9,30 +9,30 @@ class Application(Frame):
         self.root = root
         self.root.title(title)
         
-        self.file_handle = ''
+        self.file_handle = ""
 
         master_frame = Frame(root)
-        master_frame.pack(expand=YES, fill=BOTH)
+        master_frame.pack(expand="yes", fill="both")
         
         button_frame = Frame(master_frame)
         self.open_button = Button(button_frame, text="Choose File", command=self.load_file)
-        self.open_button.pack(expand=YES, fill=BOTH)
-        self.apply_button = Button(button_frame, text="Apply", command=self.apply_consistent, state=DISABLED)
-        self.apply_button.pack(expand=YES, fill=BOTH)
-        self.save_button = Button(button_frame, text="Save File", command=self.save_file, state=DISABLED)
-        self.save_button.pack(expand=YES, fill=BOTH)
+        self.open_button.pack(expand="yes", fill="both")
+        self.apply_button = Button(button_frame, text="Apply", command=self.apply_consistent, state="disabled")
+        self.apply_button.pack(expand="yes", fill="both")
+        self.save_button = Button(button_frame, text="Save File", command=self.save_file, state="disabled")
+        self.save_button.pack(expand="yes", fill="both")
 
         text_frame = Frame(master_frame)
-        self.text_box = Text(text_frame, height=10, width=50, state=DISABLED)
-        self.text_box.pack(side=TOP, expand=YES, fill=BOTH)
+        self.text_box = Text(text_frame, height=10, width=50, state="disabled")
+        self.text_box.pack(side="top", expand="yes", fill="both")
 
         for i in range(3):
             master_frame.rowconfigure(i, weight=1)
         for i in range(2):
             master_frame.columnconfigure(i, weight=1)
 
-        button_frame.grid(row=0, column=0, rowspan=3, sticky='nsew')
-        text_frame.grid(row=0, column=1, rowspan=3, columnspan=3, sticky='nsew')
+        button_frame.grid(row=0, column=0, rowspan=3, sticky="nsew")
+        text_frame.grid(row=0, column=1, rowspan=3, columnspan=3, sticky="nsew")
         
         self.root.minsize(500, 200)
 
